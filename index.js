@@ -13,3 +13,10 @@ const client = new Discord.Client(); //Criação de um novo Client
 const config = require("./config.json"); //Pegando o prefixo do bot para respostas de comandos
 
 client.login(process.env.TOKEN); //Ligando o Bot caso ele consiga acessar o token
+
+client.on('message', message => {
+  console.log(message.content);
+  if(message.content === config.prefix+'ping'){
+    message.channel.send('Pong.');
+  }
+});
