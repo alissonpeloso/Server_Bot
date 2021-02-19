@@ -15,8 +15,11 @@ const config = require("./config.json"); //Pegando o prefixo do bot para respost
 client.login(process.env.TOKEN); //Ligando o Bot caso ele consiga acessar o token
 
 client.on('message', message => {
-  console.log(message.content);
-  if(message.content === config.prefix+'ping'){
-    message.channel.send('Pong.');
-  }
 });
+
+if(message.content === config.prefix+'ping'){
+  message.channel.send('pong.');
+}
+else if(message.content === config.prefix+'beep'){
+  message.channel.send('boop.')
+}
