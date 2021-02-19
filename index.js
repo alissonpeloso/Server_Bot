@@ -18,10 +18,18 @@ const config = require("./config.json"); //Pegando o prefixo do bot para respost
 client.login(token); //Ligando o Bot caso ele consiga acessar o token
 
 client.on('message', message => {
-  if(message.content === config.prefix+'ping'){
-    message.channel.send('pong.');
+  if (!message.content.startsWith(config.prefix) || message.author.bot) return;
+
+  const args = message.content.slice(config.prefix.length).trim().split(' ');
+  const command = args.shift().toLowerCase();
+
+  if(command === 'ping'){
+    return message.channel.send('pong.');
   }
-  else if(message.content === config.prefix+'beep'){
-      message.channel.send('boop.');
+  else if (command === 'server') {
+    return message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`);
+  }
+  else if(command === 'zap'){
+    return message.channel.send(`Chama lá ${message.author} ;), 984316738`);
   }
 });
