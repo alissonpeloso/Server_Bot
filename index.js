@@ -21,5 +21,5 @@ if(message.content === config.prefix+'ping'){
   message.channel.send('pong.');
 }
 else if(message.content === config.prefix+'beep'){
-  message.channel.send('boop.')
+  message.channel.send('boop.');
 }
