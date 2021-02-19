@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const token = 'ODEyMTE1NDI2Njc4MDEzOTc3.YC8Dbg.tAHOvv1LVNVQbye1GkTbrLGf26o';
+
 app.get("/", (request, response) => {
   const ping = new Date();
   ping.setHours(ping.getHours() - 3);
@@ -12,13 +14,14 @@ const Discord = require("discord.js"); //Conexão com a livraria Discord.js
 const client = new Discord.Client(); //Criação de um novo Client
 const config = require("./config.json"); //Pegando o prefixo do bot para respostas de comandos
 
-client.login(process.env.TOKEN); //Ligando o Bot caso ele consiga acessar o token
+// client.login(process.env.TOKEN); //Ligando o Bot caso ele consiga acessar o token
+client.login(token); //Ligando o Bot caso ele consiga acessar o token
 
 client.on('message', message => {
   if(message.content === config.prefix+'ping'){
     message.channel.send('pong.');
   }
   else if(message.content === config.prefix+'beep'){
-    message.channel.send('boop.');
+      message.channel.send('boop.');
   }
 });
