@@ -24,15 +24,12 @@ client.on('message', async message => {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
-  if(command === 'ping'){
-    const m = await message.channel.send("Ping?");
-    m.edit(`Pong! Latência: ${m.createdTimestamp - message.createdTimestamp}ms.`);
-  }
-  else if (command === 'server') {
-    message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`);
-  }
-  else if(command === 'zap'){
-    message.channel.send(`Chama lá ${message.author} ;), 984316738`);
+  try {
+    let commandFile = require(`./commands/${command}.js`);
+    delete require.cache[require.resolve(`./commands/${command}.js`)];
+    return commandFile.run(client, message, args);
+  } catch (error) {
+    console.error("Erro: "+error);
   }
 });
 
