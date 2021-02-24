@@ -78,11 +78,11 @@ module.exports.run = async(client, message, args) => {
 	m[10][4] = "Org. de Computadores";
 
 	//friday
-	m[6][4] = "Grafos";
-	m[7][4] = "Grafos";
-	m[8][4] = "Grafos";
-	m[9][4] = "IPC";
-	m[10][4] = "IPC";
+	m[6][5] = "Grafos";
+	m[7][5] = "Grafos";
+	m[8][5] = "Grafos";
+	m[9][5] = "IPC";
+	m[10][5] = "IPC";
 
 	var newMessage = "";
 
