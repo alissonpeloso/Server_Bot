@@ -27,11 +27,11 @@ module.exports.run = async(client, message, args) => {
 	}
 
 	m[0][0] = "";	
-	m[0][1] = "**Monday**";
-	m[0][2] = "**Tuesday**";
-	m[0][3] = "**Wednesday**";
-	m[0][4] = "**Thursday**";
-	m[0][5] = "**Friday**";
+	m[0][1] = "**Segunda-Feira**";
+	m[0][2] = "**Terça-Feira**";
+	m[0][3] = "**Quarta-Feira**";
+	m[0][4] = "**Quinta-Feira**";
+	m[0][5] = "**Sexta-Feira**";
 
 	m[1][0] = "**07:30**"
 	m[2][0] = "**08:20**"
