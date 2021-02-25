@@ -1,4 +1,3 @@
-const token = 'ODEyMTE1NDI2Njc4MDEzOTc3.YC8Dbg.tAHOvv1LVNVQbye1GkTbrLGf26o';
 const Discord = require("discord.js"); //Conexão com a livraria Discord.js
 const client = new Discord.Client(); //Criação de um novo Client
 const config = require("./config.json"); //Pegando o prefixo do bot para respostas de comandos
@@ -23,5 +22,4 @@ client.on('message', async message => {
   }
 });
 
-// client.login(process.env.TOKEN); //Ligando o Bot caso ele consiga acessar o token
-client.login(token); //Ligando o Bot caso ele consiga acessar o token
+client.login(process.env.TOKEN); //Ligando o Bot caso ele consiga acessar o token
