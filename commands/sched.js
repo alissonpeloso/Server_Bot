@@ -25,6 +25,15 @@ module.exports.run = async(client, message, args) => {
 	else if(args[0] === "friday" || args[0] === "fri"){
 		weekDay = 5;
 	}
+	else if(args[0] === "saturday" || args[0] === "sat"){
+		weekDay = 6;
+	}
+	else if(args[0] === "sunday" || args[0] === "sun"){
+		weekDay = 0;
+	}
+	else if(args.length == 1){
+		return;
+	}
 
 	m[0][0] = "";	
 	m[0][1] = "**Segunda-Feira**";
@@ -86,6 +95,27 @@ module.exports.run = async(client, message, args) => {
 
 	var newMessage = "";
 
+	if(weekDay == 6){
+		const messageEmbed = new Discord.MessageEmbed()
+		.setColor('#036699')
+		.setTitle("**Sábado**")
+		.setDescription("Folgaa! 🥳🥳")
+		.setTimestamp()
+	
+		message.channel.send(messageEmbed);
+		return;
+	}
+	else if(weekDay == 0){
+		const messageEmbed = new Discord.MessageEmbed()
+		.setColor('#036699')
+		.setTitle("**Domingo**")
+		.setDescription("Folgaa! 🥳🥳")
+		.setTimestamp()
+	
+		message.channel.send(messageEmbed);
+		return;
+	}
+
 	for(var i = 1; i < m.length; i++){
 		if(m[i][weekDay] == 0){
 			newMessage+= "";
@@ -105,8 +135,4 @@ module.exports.run = async(client, message, args) => {
 		.setTimestamp()
 	
 	message.channel.send(messageEmbed);
-
-	if(args[0] === "set"){
-
-	}
 };

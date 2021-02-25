@@ -13,6 +13,7 @@
   "dependencies": {
     "discord.js": "^12.5.1",
     "express": "^4.17.1",
-    "gridjs": "^3.3.0"
+    "gridjs": "^3.3.0",
+    "node-cron": "^2.0.3"
   }
 }
