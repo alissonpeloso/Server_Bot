@@ -31,7 +31,7 @@ module.exports.run = async(client, message, args) => {
 	else if(args[0] === "sunday" || args[0] === "sun"){
 		weekDay = 0;
 	}
-	else if(args.length == 1){
+	else if(args.length >= 1){
 		return;
 	}
 
