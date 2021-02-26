@@ -5,14 +5,20 @@ const config = require("./config.json"); //Pegando o prefixo do bot para respost
 const cron = require('node-cron');
 const express = require('express');
 
-// ...
-
 app = express();
 
-// Schedule tasks to be run on the server.
 cron.schedule('0 6 * * *', function() {
   console.log("Deu certo");
   var chan = client.channels.cache.get("814237038680735806").send("!sched");
+}, {
+  timezone: "America/Sao_Paulo"
+});
+
+cron.schedule('20 10 * * *', function() {
+  console.log("Deu certo");
+  var chan = client.channels.cache.get("814237038680735806").send("Vou mandar mensagem as 10 e 20 do servidor de host");
+}, {
+  timezone: "America/Sao_Paulo"
 });
 
 app.listen(3000);
