@@ -9,6 +9,9 @@ module.exports.run = async(client, message, args) => {
 
 	if(args[0] === "tomorrow" || args[0] === "tom"){
 		weekDay = weekDay+1;
+		if(weekDay == 7){
+			weekDay = 0;
+		}
 	}
 	else if(args[0] === "monday" || args[0] === "mon"){
 		weekDay = 1;
