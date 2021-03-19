@@ -8,8 +8,8 @@ const express = require('express');
 app = express();
 
 cron.schedule('0 6 * * *', function() {
-  console.log("Deu certo");
   var chan = client.channels.cache.get("814237038680735806").send("!sched");
+  var chan = client.channels.cache.get("812100021104148490").send("!list");
 }, {
   timezone: "America/Sao_Paulo"
 });
