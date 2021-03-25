@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "gridjs": "^3.3.0",
     "node-cron": "^2.0.3"
