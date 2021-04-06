@@ -11,7 +11,10 @@ module.exports.run = async(client, message, args) => {
 	for(var i = 1; i < args.length; i++)
 		numFinal += args[i];
 
-	numFinal = eval(numFinal);
+	if(numFinal.length > 0)
+		numFinal = eval(numFinal);
+	else
+		numFinal = 0;
 	
 	var randNum = Math.floor(Math.random() * parseInt(numMaxDado, 10));
 	randNum++;
