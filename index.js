@@ -21,7 +21,7 @@ app.listen(3000);
 
 client.on("ready", () => {
   client.user.setActivity("Xesquedele | !help");
-  console.log("Ourbot está pronto para uso!");
+  console.log("Jureide está pronta para uso!");
 });
 
 client.on('message', async message => {
