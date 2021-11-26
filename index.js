@@ -10,12 +10,13 @@ const express = require('express');
 
 app = express();
 
-cron.schedule('0 6 * * *', function() {
-  client.channels.cache.get("814237038680735806").send("!sched <@!340640482256224259>");
-  client.channels.cache.get("814237038680735806").send("!sched <@!251453510296666113>");
-  client.channels.cache.get("814237038680735806").send("!sched <@!140525920111820800>");
-  client.channels.cache.get("814237038680735806").send("!sched <@!523536956576104478>");
-  client.channels.cache.get("814237038680735806").send("!sched <@!187703124402634752>");
+var users = ['<@!340640482256224259>, <@!251453510296666113>, <@!140525920111820800>, <@!523536956576104478>, <@!187703124402634752>'];
+
+cron.schedule('0 6 * * *', async function () {
+  for await(let user of users) {
+    client.channels.cache.get("814237038680735806").send(`!sched ${user}`);
+    await new Promise(resolve => setTimeout(resolve, 5000));
+  }
   client.channels.cache.get("812100021104148490").send("!list");
 }, {
   timezone: "America/Sao_Paulo"
