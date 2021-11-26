@@ -1,8 +1,7 @@
-// require('http').createServer().listen(3000)
-
 const Discord = require("discord.js"); //Conexão com a livraria Discord.js
 const client = new Discord.Client(); //Criação de um novo Client
 const config = require("./config.json"); //Pegando o prefixo do bot para respostas de comandos
+const fetch = require('node-fetch');
 require('dotenv').config();
 
 const cron = require('node-cron');
@@ -35,13 +34,21 @@ client.on('message', async message => {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
-  try {
-    let commandFile = require(`./commands/${command}.js`);
-    delete require.cache[require.resolve(`./commands/${command}.js`)];
-    return commandFile.run(client, message, args);
-  } catch (error) {
-    console.error("Erro: "+error);
+  var commandSheet = await (await fetch(process.env.COMMANDS_SHEET_URL + command)).json();
+
+  if (!commandSheet.error) {
+    var drawn = Math.floor(Math.random() * commandSheet.length);
+    await message.channel.send(commandSheet[drawn].answer);
+  } else {
+    try {
+      let commandFile = require(`./commands/${command}.js`);
+      delete require.cache[require.resolve(`./commands/${command}.js`)];
+      return commandFile.run(client, message, args);
+    } catch (error) {
+      console.error("Erro: "+error);
+    }
   }
+
 });
 
 client.login(process.env.TOKEN); //Ligando o Bot caso ele consiga acessar o token
