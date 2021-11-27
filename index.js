@@ -9,10 +9,10 @@ const express = require('express');
 
 app = express();
 
-var users = ['<@!340640482256224259>, <@!251453510296666113>, <@!140525920111820800>, <@!523536956576104478>, <@!187703124402634752>'];
+var users = ['<@!340640482256224259>', '<@!251453510296666113>', '<@!140525920111820800>', '<@!523536956576104478>', '<@!187703124402634752>'];
 
 cron.schedule('0 6 * * *', async function () {
-  for await(let user of users) {
+  for (let user of users) {
     client.channels.cache.get("814237038680735806").send(`!sched ${user}`);
     await new Promise(resolve => setTimeout(resolve, 5000));
   }
