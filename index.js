@@ -9,7 +9,7 @@ const express = require('express');
 
 app = express();
 
-var users = ['<@!340640482256224259>', '<@!251453510296666113>', '<@!140525920111820800>', '<@!523536956576104478>', '<@!187703124402634752>'];
+var users = ['Alisson', 'Eduardo', 'Guilherme', 'Rafael', 'Stefani'];
 
 cron.schedule('0 6 * * *', async function () {
 	for (let user of users) {

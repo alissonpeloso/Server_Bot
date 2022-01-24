@@ -8,54 +8,71 @@ async function getData(url, id) {
 module.exports.run = async (client, message, args) => {
 	try {
 		var sheetUrl = "https://opensheet.vercel.app/1q0LyS1weVdLfzAA7jUyF71LBLYC-X36LszYWx8LOR4s/";
-		var author = message.author.discriminator;
-	
-		var regexMention = new RegExp(/\<\@\![\d]*\>/);
-	
-		args.forEach( (element, index) => {
-			if (regexMention.test(element)) {
-				var user = client.users.cache.find(user => user.id === element.replace(/(\<\@\!|\>)/g, ""));
-				author = user.discriminator;
-				args.splice(index);
+		var author;
+
+		var dayArg = args[1];
+
+		if (args[0] == "Alisson" || args[0] == "Eduardo" || args[0] == "Guilherme" || args[0] == "Stefani" || args[0] == "Rafael") {
+			author = args[0]
+		} else {
+			dayArg = args[0];
+			switch (message.author.discriminator) {
+				case "8793":
+					author = "Alisson";
+					break;
+				case "8592":
+					author = "Eduardo";
+					break;
+				case "5122":
+					author = "Guilherme";
+					break;
+				case "6149":
+					author = "Stefani";
+					break;
+				case "1761":
+					author = "Rafael";
+					break
+				default:
+					break;
 			}
-		});
+		}
 	
 		now = new Date;
 		weekDay = now.getDay();
 	
-		if(args[0] === "tomorrow" || args[0] === "tom"){
+		if(dayArg === "tomorrow" || dayArg === "tom"){
 			weekDay = weekDay+1;
 			if(weekDay == 7){
 				weekDay = 0;
 			}
 		}
-		else if(args[0] === "monday" || args[0] === "mon"){
+		else if(dayArg === "monday" || dayArg === "mon"){
 			weekDay = 1;
 		}
-		else if(args[0] === "tuesday" || args[0] === "tue"){
+		else if(dayArg === "tuesday" || dayArg === "tue"){
 			weekDay = 2;
 		}
-		else if(args[0] === "wednesday" || args[0] === "wed"){
+		else if(dayArg === "wednesday" || dayArg === "wed"){
 			weekDay = 3;
 		}
-		else if(args[0] === "thursday" || args[0] === "thu"){
+		else if(dayArg === "thursday" || dayArg === "thu"){
 			weekDay = 4;
 		}
-		else if(args[0] === "friday" || args[0] === "fri"){
+		else if(dayArg === "friday" || dayArg === "fri"){
 			weekDay = 5;
 		}
-		else if(args[0] === "saturday" || args[0] === "sat"){
+		else if(dayArg === "saturday" || dayArg === "sat"){
 			weekDay = 6;
 		}
-		else if(args[0] === "sunday" || args[0] === "sun"){
+		else if(dayArg === "sunday" || dayArg === "sun"){
 			weekDay = 0;
 		}
-		else if(args.length >= 1){
+	
+		if (!author) {
 			return;
 		}
-	
+
 		var sched = await getData(sheetUrl, author);
-	
 		var newMessage = "";
 	
 		var days = Object.keys(sched[0])
