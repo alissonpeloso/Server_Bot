@@ -16,7 +16,6 @@ cron.schedule('0 6 * * *', async function () {
 		client.channels.cache.get("814237038680735806").send(`!sched ${user}`);
 		await new Promise(resolve => setTimeout(resolve, 5000));
 	}
-	client.channels.cache.get("812100021104148490").send("!list");
 }, {
 	timezone: "America/Sao_Paulo"
 });
