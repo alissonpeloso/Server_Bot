@@ -33,8 +33,6 @@ client.on('message', async message => {
 	const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
 	const command = args.shift().toLowerCase();
 
-	console.log("Comando: " + command);
-
 	try {
 		var commandSheet = await (await fetch(process.env.COMMANDS_SHEET_URL + command)).json();
 
